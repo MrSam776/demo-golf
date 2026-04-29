@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tom Reid Golf | PGA Coaching · Cambridgeshire</title>
+  <meta name="description" content="PGA qualified golf coaching in Cambridgeshire. One-to-one lessons for players of all levels. Bespoke fitting and coaching from a qualified professional." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --sand: #f5f1e8;
+      --sand-mid: #ede7d5;
+      --sand-dark: #d8cfb8;
+      --linen: #faf8f4;
+      --brown: #2a1f0c;
+      --brown-mid: #3d2e14;
+      --brown-warm: #6b4f28;
+      --gold: #c4962a;
+      --gold-light: #e8b84a;
+      --green: #1e3a22;
+      --text: #1a1610;
+      --muted: #6b5e48;
+      --white: #ffffff;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Jost', sans-serif; background: var(--linen); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+
+    /* ── NAV — Minimal, transparent ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.8rem 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      background: transparent;
+      transition: all 0.5s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(42,31,12,0.95);
+      padding: 1rem 4rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .nav-cta {
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(196,150,42,0.3);
+      padding-bottom: 2px;
+      transition: border-color 0.3s;
+    }
+
+    .nav-cta:hover { border-color: var(--gold); }
+
+    /* ── HERO — Full screen, centred, single focus ── */
+    .hero {
+      height: 100vh;
+      background: var(--brown);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-pattern {
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(196,150,42,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(196,150,42,0.04) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    .hero-photo {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, var(--brown-mid), var(--brown));
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.05);
+      font-size: 8rem;
+    }
+
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: rgba(30,22,8,0.72);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      animation: fadeUp 1s ease both;
+    }
+
+    .hero-pga {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.68rem;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-pga::before, .hero-pga::after { content: '—'; }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      color: var(--white);
+      line-height: 0.95;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 em {
+      display: block;
+      font-style: italic;
+      color: var(--gold-light);
+      font-weight: 300;
+    }
+
+    .hero-sub {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.45);
+      max-width: 440px;
+      margin: 0 auto 3rem;
+      font-weight: 200;
+      line-height: 1.9;
+      letter-spacing: 0.04em;
+    }
+
+    .btn-hero {
+      display: inline-block;
+      border: 1px solid rgba(196,150,42,0.4);
+      color: var(--gold-light);
+      padding: 0.9rem 3rem;
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.35s;
+    }
+
+    .btn-hero:hover { background: var(--gold); color: var(--brown); border-color: var(--gold); }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.2);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    .hero-scroll-hint::after { content: ''; width: 1px; height: 30px; background: rgba(255,255,255,0.15); }
+
+    /* ── PHILOSOPHY — Full width editorial text ── */
+    .philosophy { padding: 8rem 4rem; background: var(--linen); }
+    .philosophy-inner { max-width: 780px; margin: 0 auto; }
+
+    .philo-label {
+      font-size: 0.68rem;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .philo-label::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
+
+    .philo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      color: var(--brown);
+      line-height: 1.35;
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 3rem;
+    }
+
+    .philo-body { font-size: 0.95rem; color: var(--muted); line-height: 1.9; font-weight: 300; max-width: 560px; }
+
+    /* ── COACHING — Stacked full-width rows ── */
+    .coaching { background: var(--sand); padding: 0; }
+
+    .coaching-header { padding: 5rem 4rem 4rem; }
+
+    .coaching-label {
+      font-size: 0.68rem;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .coaching-label::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
+
+    .coaching-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      color: var(--brown);
+      line-height: 1.0;
+      font-weight: 300;
+      max-width: 600px;
+    }
+
+    .coaching-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 1fr;
+      border-top: 1px solid var(--sand-dark);
+      padding: 3.5rem 4rem;
+      gap: 4rem;
+      align-items: start;
+      transition: background 0.3s;
+    }
+
+    .coaching-row:hover { background: var(--sand-mid); }
+    .coaching-row:last-child { border-bottom: 1px solid var(--sand-dark); }
+
+    .coaching-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 300;
+      color: var(--sand-dark);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .coaching-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--brown);
+      line-height: 1.2;
+      padding-top: 0.5rem;
+    }
+
+    .coaching-desc { font-size: 0.9rem; color: var(--muted); line-height: 1.85; font-weight: 300; padding-top: 0.5rem; }
+
+    /* ── ABOUT — Centred, editorial, minimal ── */
+    .about { padding: 8rem 4rem; background: var(--linen); }
+    .about-inner { max-width: 900px; margin: 0 auto; }
+
+    .about-split { display: grid; grid-template-columns: 280px 1fr; gap: 6rem; align-items: start; }
+
+    .about-photo-col { position: sticky; top: 8rem; }
+
+    .about-photo {
+      background: var(--brown-mid);
+      aspect-ratio: 3/4;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.12);
+      font-size: 4rem;
+      gap: 0.8rem;
+      border: 1px solid rgba(196,150,42,0.1);
+    }
+
+    .about-photo p { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.15); }
+
+    .about-credential {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      border: 1px solid var(--sand-dark);
+      text-align: center;
+    }
+
+    .about-credential-text {
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .about-text-col { }
+
+    .about-label {
+      font-size: 0.68rem;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .about-label::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
+
+    .about-name { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300; color: var(--brown); line-height: 1.1; margin-bottom: 2.5rem; }
+
+    .about-p { font-size: 0.95rem; color: var(--muted); line-height: 1.95; font-weight: 300; margin-bottom: 1.5rem; }
+
+    /* ── TESTIMONIALS — Full width pull quotes ── */
+    .testimonials { background: var(--brown); padding: 8rem 4rem; }
+
+    .testi-label {
+      font-size: 0.68rem;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .testi-label::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
+
+    .testi-item { max-width: 820px; margin: 0 auto 5rem; padding-bottom: 5rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .testi-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .testi-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 3vw, 2.3rem);
+      color: rgba(255,255,255,0.75);
+      line-height: 1.45;
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    .testi-meta { display: flex; align-items: center; gap: 1.2rem; }
+    .testi-line { width: 30px; height: 1px; background: var(--gold); }
+    .testi-author { font-size: 0.78rem; font-weight: 300; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
+
+    /* ── CONTACT — Centred, minimal, form below statement ── */
+    .contact { background: var(--sand); padding: 8rem 4rem; }
+    .contact-inner { max-width: 680px; margin: 0 auto; }
+
+    .contact-label {
+      font-size: 0.68rem;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    .contact-label::before { content: ''; width: 40px; height: 1px; background: var(--gold); }
+
+    .contact-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; color: var(--brown); line-height: 1.0; margin-bottom: 1.5rem; }
+
+    .contact-body { font-size: 0.92rem; color: var(--muted); line-height: 1.85; font-weight: 300; margin-bottom: 3rem; max-width: 480px; }
+
+    .contact-details { display: flex; gap: 3rem; margin-bottom: 3.5rem; padding-bottom: 3.5rem; border-bottom: 1px solid var(--sand-dark); flex-wrap: wrap; }
+    .cd { }
+    .cd-key { font-size: 0.65rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+    .cd-val { font-size: 0.9rem; color: var(--brown); font-weight: 400; }
+    .cd-val a { color: var(--brown-warm); text-decoration: none; }
+    .cd-val a:hover { color: var(--gold); }
+
+    form { display: flex; flex-direction: column; gap: 1.5rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    label {
+      font-size: 0.65rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    input, textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--sand-dark);
+      padding: 0.7rem 0;
+      color: var(--text);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 300;
+      transition: border-color 0.3s;
+      width: 100%;
+      border-radius: 0;
+    }
+
+    input::placeholder, textarea::placeholder { color: #c0b090; }
+    input:focus, textarea:focus { outline: none; border-color: var(--gold); }
+    textarea { resize: none; min-height: 80px; }
+
+    .btn-submit {
+      background: var(--brown);
+      color: var(--white);
+      border: none;
+      padding: 1.1rem 3rem;
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.3s;
+      align-self: flex-start;
+    }
+
+    .btn-submit:hover { background: var(--gold); }
+
+    .form-success { display: none; padding: 1.2rem 0; color: var(--gold); font-size: 0.88rem; letter-spacing: 0.1em; border-top: 1px solid var(--sand-dark); }
+
+    footer {
+      background: var(--brown);
+      padding: 3rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-logo { font-family: 'Cormorant Garamond', serif; color: rgba(255,255,255,0.5); font-size: 0.9rem; letter-spacing: 0.1em; }
+    .footer-text { font-size: 0.72rem; color: rgba(255,255,255,0.2); letter-spacing: 0.1em; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      nav.scrolled { padding: 0.8rem 1.5rem; }
+      .hero { padding: 2rem 1.5rem; }
+      .philosophy { padding: 5rem 1.5rem; }
+      .coaching-header { padding: 4rem 1.5rem 2rem; }
+      .coaching-row { grid-template-columns: 60px 1fr; gap: 1.5rem; padding: 2.5rem 1.5rem; }
+      .coaching-desc { display: none; }
+      .about { padding: 5rem 1.5rem; }
+      .about-split { grid-template-columns: 1fr; gap: 3rem; }
+      .about-photo-col { position: static; }
+      .about-photo { max-width: 200px; }
+      .testimonials { padding: 5rem 1.5rem; }
+      .contact { padding: 5rem 1.5rem; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="nav">
+    <a href="#" class="nav-logo">Tom Reid Golf</a>
+    <a href="#contact" class="nav-cta">Enquire about lessons</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-photo">⛳</div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-pga">PGA Qualified Coach</div>
+      <h1>
+        Coaching that<br>
+        <em>transforms</em><br>
+        your game
+      </h1>
+      <p class="hero-sub">One-to-one lessons from a PGA qualified coach in Cambridgeshire. Tailored to where you are — and focused on where you want to be.</p>
+      <a href="#contact" class="btn-hero">Enquire about lessons</a>
+    </div>
+    <div class="hero-scroll-hint">Scroll</div>
+  </section>
+
+  <section class="philosophy fade-in">
+    <div class="philosophy-inner">
+      <div class="philo-label">Coaching philosophy</div>
+      <p class="philo-text">"Most golfers don't need to be told what's wrong. They need someone who can show them how to fix it — and make sure it actually sticks."</p>
+      <p class="philo-body">Every lesson I give starts by listening. Where you are, what's frustrating you, what you've tried. From there, we build a focused plan around your game — not a generic curriculum. Whether you're a complete beginner or an experienced player chasing a lower handicap, the approach is the same: targeted, patient, and built around you.</p>
+    </div>
+  </section>
+
+  <section class="coaching fade-in">
+    <div class="coaching-header">
+      <div class="coaching-label">What I offer</div>
+      <h2 class="coaching-title">Lessons for every stage of the game</h2>
+    </div>
+    <div class="coaching-row">
+      <div class="coaching-num">01</div>
+      <div class="coaching-name">Beginner Lessons</div>
+      <div class="coaching-desc">Learn the fundamentals properly from the start. Grip, stance, posture, and swing mechanics built on a solid foundation — so you don't spend years unlearning bad habits.</div>
+    </div>
+    <div class="coaching-row">
+      <div class="coaching-num">02</div>
+      <div class="coaching-name">Game Improvement</div>
+      <div class="coaching-desc">Targeted work on the specific areas holding your score back. We'll diagnose what's going wrong and fix it efficiently — no generic advice, no wasted sessions.</div>
+    </div>
+    <div class="coaching-row">
+      <div class="coaching-num">03</div>
+      <div class="coaching-name">Swing Analysis</div>
+      <div class="coaching-desc">Video and data-driven analysis of your swing to show exactly what's happening and why. Understanding it is the first step to changing it.</div>
+    </div>
+    <div class="coaching-row">
+      <div class="coaching-num">04</div>
+      <div class="coaching-name">Short Game & Putting</div>
+      <div class="coaching-desc">Where most rounds are won or lost. Precision work around the green — chipping, bunker play, and putting — to save shots where it matters most.</div>
+    </div>
+  </section>
+
+  <section class="about fade-in">
+    <div class="about-inner">
+      <div class="about-split">
+        <div class="about-photo-col">
+          <div class="about-photo">⛳<p>Photo coming soon</p></div>
+          <div class="about-credential"><div class="about-credential-text">PGA Qualified Coach</div></div>
+        </div>
+        <div class="about-text-col">
+          <div class="about-label">About Tom</div>
+          <h2 class="about-name">Tom Reid —<br>PGA Coach &amp; Club Fitter</h2>
+          <p class="about-p">I'm a PGA qualified golf coach based in Cambridgeshire. By day I work professionally as a golf fitter — which means I understand the technical relationship between equipment and mechanics at a level most coaches don't.</p>
+          <p class="about-p">That knowledge directly benefits my coaching. When I watch a golfer, I'm not just seeing the swing — I'm seeing everything that influences it. Most of my coaching clients come through recommendation, often from players I've fitted or their families who've seen the change first-hand.</p>
+          <p class="about-p">My lessons are relaxed, focused, and built entirely around the individual. I'll meet you where you are, work at a pace that suits you, and give you the kind of feedback that actually makes a difference out on the course.</p>
+          <p class="about-p">If you're considering lessons, I'm always happy to have an initial conversation. There's no pressure and no commitment until you've decided it's right for you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials fade-in">
+    <div style="max-width: 820px; margin: 0 auto;">
+      <div class="testi-label">What students say</div>
+      <div class="testi-item">
+        <p class="testi-quote">"Tom completely changed how I think about my swing. Three lessons in and my handicap had already dropped two shots. The way he explains things makes it click in a way nothing else has."</p>
+        <div class="testi-meta"><div class="testi-line"></div><div class="testi-author">Richard A. — Cambridgeshire</div></div>
+      </div>
+      <div class="testi-item">
+        <p class="testi-quote">"I'd been playing for years and always struggled with my short game. Tom identified exactly what I was doing wrong in the first session. I've genuinely never putted better."</p>
+        <div class="testi-meta"><div class="testi-line"></div><div class="testi-author">Caroline H. — Cambridgeshire</div></div>
+      </div>
+      <div class="testi-item">
+        <p class="testi-quote">"Bought my son a lesson as a birthday gift and he hasn't stopped talking about it. Tom is patient, knowledgeable, and made the whole thing genuinely enjoyable. He's booked in again already."</p>
+        <div class="testi-meta"><div class="testi-line"></div><div class="testi-author">Parent of student — Cambridge</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact fade-in" id="contact">
+    <div class="contact-inner">
+      <div class="contact-label">Get in touch</div>
+      <h2 class="contact-title">Enquire about lessons</h2>
+      <p class="contact-body">Fill in the form and I'll respond within 24 hours. If you'd prefer to speak directly before committing to anything, you're welcome to call.</p>
+      <div class="contact-details">
+        <div class="cd">
+          <div class="cd-key">Email</div>
+          <div class="cd-val"><a href="mailto:tom@tomreidgolf.co.uk">tom@tomreidgolf.co.uk</a></div>
+        </div>
+        <div class="cd">
+          <div class="cd-key">Phone</div>
+          <div class="cd-val"><a href="tel:+447000000000">+44 7000 000 000</a></div>
+        </div>
+        <div class="cd">
+          <div class="cd-key">Based</div>
+          <div class="cd-val">Cambridgeshire</div>
+        </div>
+      </div>
+      <form id="contact-form" action="https://formspree.io/f/placeholder" method="POST">
+        <div class="form-group">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="Your email" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone number</label>
+          <input type="tel" id="phone" name="phone" placeholder="Your number" />
+        </div>
+        <div class="form-group">
+          <label for="message">Tell me about your game</label>
+          <textarea id="message" name="message" placeholder="Your current level, what you'd like to improve, any questions..." rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send enquiry</button>
+      </form>
+      <div class="form-success" id="form-success">✓ Enquiry received — Tom will be in touch within 24 hours.</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Tom Reid Golf · Cambridgeshire</div>
+    <div class="footer-text">PGA Qualified · © 2025</div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 80); });
+
+    const fadeEls = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(el => { if (el.isIntersecting) { el.target.classList.add('visible'); observer.unobserve(el.target); } });
+    }, { threshold: 0.06 });
+    fadeEls.forEach(el => observer.observe(el));
+
+    const form = document.getElementById('contact-form');
+    const success = document.getElementById('form-success');
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+      if (res.ok) { form.style.display = 'none'; success.style.display = 'block'; }
+    });
+  </script>
+</body>
+</html>
